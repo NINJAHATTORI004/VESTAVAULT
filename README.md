@@ -1,73 +1,191 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+Sure! Below is the content formatted as a `README.md` file:
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+```markdown
+# NestJS CRUD API with PostgreSQL
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Author
+**Name:** Ansh Mittal  
+**Twitter:** [@anshmittal132](https://twitter.com/anshmittal132)
 
-## Description
+Made with 💗 using TypeScript
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+---
 
-## Installation
+### Overview
 
-```bash
-$ npm install
+This project is a basic NestJS application that manages a PostgreSQL database with two tables: `Users` and `WalletAddress`. It includes complete CRUD operations for both tables and is designed to be a foundation for further development.
+
+### Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [API Endpoints](#api-endpoints)
+  - [Users Endpoints](#users-endpoints)
+  - [WalletAddress Endpoints](#walletaddress-endpoints)
+- [Swagger Documentation](#swagger-documentation)
+- [Deployment](#deployment)
+- [Database Setup](#database-setup)
+
+### Prerequisites
+
+- **Node.js** and **npm**: Download and install from [Node.js website](https://nodejs.org/).
+- **Nest CLI**: Install globally using `npm install -g @nestjs/cli`.
+- **PostgreSQL**: Download and install from [PostgreSQL website](https://www.postgresql.org/download/).
+- **Vercel CLI** (optional for deployment): Install globally using `npm install -g vercel`.
+
+### Project Structure
+
+```
+nest-crud-app/
+├── src/
+│   ├── app.module.ts
+│   ├── main.ts
+│   ├── users/
+│   │   ├── dto/
+│   │   │   ├── create-user.dto.ts
+│   │   │   ├── update-user.dto.ts
+│   │   ├── users.controller.ts
+│   │   ├── users.entity.ts
+│   │   ├── users.module.ts
+│   │   ├── users.service.ts
+│   ├── wallet-address/
+│   │   ├── dto/
+│   │   │   ├── create-wallet-address.dto.ts
+│   │   │   ├── update-wallet-address.dto.ts
+│   │   ├── wallet-address.controller.ts
+│   │   ├── wallet-address.entity.ts
+│   │   ├── wallet-address.module.ts
+│   │   ├── wallet-address.service.ts
+├── tsconfig.json
+├── package.json
 ```
 
-## Running the app
+### Installation
 
-```bash
-# development
-$ npm run start
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/your-repo/nest-crud-app.git
+   cd nest-crud-app
+   ```
 
-# watch mode
-$ npm run start:dev
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-# production mode
-$ npm run start:prod
+3. **Configure PostgreSQL connection**:
+   Update the PostgreSQL connection details in `src/app.module.ts`.
+
+### Running the Application
+
+1. **Run the application**:
+   ```bash
+   npm run start
+   ```
+
+2. **Access the application**:
+   Open your browser and navigate to `http://localhost:3000`.
+
+### API Endpoints
+
+#### Users Endpoints
+
+- **Get all users**:
+  ```
+  GET /users
+  ```
+
+- **Get a user by ID**:
+  ```
+  GET /users/:id
+  ```
+
+- **Create a new user**:
+  ```json
+  POST /users
+  {
+    "name": "John Doe",
+    "email": "john@example.com"
+  }
+  ```
+
+- **Update a user by ID**:
+  ```json
+  PUT /users/:id
+  {
+    "name": "Jane Doe",
+    "email": "jane@example.com"
+  }
+  ```
+
+- **Delete a user by ID**:
+  ```
+  DELETE /users/:id
+  ```
+
+#### WalletAddress Endpoints
+
+- **Get all wallet addresses**:
+  ```
+  GET /wallet-address
+  ```
+
+- **Get a wallet address by ID**:
+  ```
+  GET /wallet-address/:id
+  ```
+
+- **Create a new wallet address**:
+  ```json
+  POST /wallet-address
+  {
+    "user_id": 1,
+    "address": "0x123...",
+    "type": "Ethereum"
+  }
+  ```
+
+- **Update a wallet address by ID**:
+  ```json
+  PUT /wallet-address/:id
+  {
+    "address": "0x456...",
+    "type": "Bitcoin"
+  }
+  ```
+
+- **Delete a wallet address by ID**:
+  ```
+  DELETE /wallet-address/:id
+  ```
+
+### Swagger Documentation
+
+The application includes Swagger for API documentation. Once the application is running, you can access the Swagger UI at `http://localhost:3000/api`.
+
+### Deployment
+
+To deploy this project to Vercel, follow these steps:
+
+1. **Log in to Vercel**:
+   ```bash
+   vercel login
+   ```
+
+2. **Deploy the application**:
+   ```bash
+   vercel
+   ```
+
+3. **Follow the prompts to configure and deploy**.
+
+### Database Setup
+
+Ensure your PostgreSQL server is running and create a database named `nest_crud_db`. Update the connection details in `src/app.module.ts` accordingly. The application will automatically create the necessary tables on startup.
+
+---
+
+By following these instructions, you should be able to set up, run, and deploy the NestJS CRUD API application. If you encounter any issues or have questions, feel free to reach out on Twitter [@anshmittal132](https://twitter.com/anshmittal132).
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
