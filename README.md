@@ -58,15 +58,7 @@ This project is a basic NestJS application that manages a PostgreSQL database wi
 - `PUT /wallet-address/:id`
 - `DELETE /wallet-address/:id`
 
-## Deployment
-1. Log in to Vercel:
-    ```sh
-    vercel login
-    ```
-2. Deploy the application:
-    ```sh
-    vercel
-    ```
+
 
 ## Database Setup
 Ensure your PostgreSQL server is running and create a database named `nest_crud_db`. Update the connection details in `src/app.module.ts`. The application will automatically create the necessary tables on startup.
