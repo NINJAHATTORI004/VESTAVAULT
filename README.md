@@ -16,7 +16,7 @@ This project is a basic NestJS application that manages a PostgreSQL database wi
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
 - [API Endpoints](#api-endpoints)
-- [Deployment](#deployment)
+
 - [Database Setup](#database-setup)
 
 ## Prerequisites
