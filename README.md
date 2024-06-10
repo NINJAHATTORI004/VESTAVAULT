@@ -23,7 +23,7 @@ This project is a basic NestJS application that manages a PostgreSQL database wi
 - **Node.js** and **npm**: Download and install from [Node.js website](https://nodejs.org/).
 - **Nest CLI**: Install globally using `npm install -g @nestjs/cli`.
 - **PostgreSQL**: Download and install from [PostgreSQL website](https://www.postgresql.org/download/).
-- **Vercel CLI** (optional for deployment): Install globally using `npm install -g vercel`.
+
 
 ## Installation
 1. Clone the repository:
